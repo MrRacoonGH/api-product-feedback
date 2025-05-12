@@ -24,36 +24,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
           const $textRegular = document.createElement("span");
-          $textRegular.textContent = $description
+          $textRegular.textContent = item.comments
 
           const $feedbackItemText = document.createElement("div")
           $feedbackItemText.classList.add("feedback-item-text")
 
           const $heading = document.createElement("h3")
           $heading.classList.add("heading-3")
+          $heading.textContent = item.title
 
           const $paragraph = document.createElement("p")
+          $paragraph.textContent = item.description
 
           const $feedbackChip = document.createElement("div")
           $feedbackChip.classList.add("feedback-chip")
           $feedbackChip.classList.add("text-regular-3")
+          $feedbackChip.textContent = item.category
 
           const $feedbackComments = document.createElement("div")
           $feedbackComments.classList.add("feedback-item-comments")
 
           const $bold = document.createElement("span")
           $bold.classList.add("bold")
+          $bold.textContent = item.vote
 
-          $feddbackItem.appendChild($feedbackVote)
-          $feedbackVote.appendChild($textRegular)
-          $textRegular.appendChild($feedbackItemText)
-          $feedbackItemText.appendChild($heading)
-          $heading.appendChild($paragraph)
-          $paragraph.appendChild($feedbackChip)
-          $feedbackChip.appendChild($feedbackComments)
-          $feedbackComments.appendChild($bold)
+
+         $feedbackItemText.appendChild($heading)
+         $feedbackItemText.appendChild($paragraph)
+         $feedbackItemText.appendChild($feedbackChip)
+
+         $feedbackVote.appendChild($textRegular)
+
+         $feedbackComments.appendChild($bold)
+
+
+         $feddbackItem.appendChild($feedbackComments)
+         $feddbackItem.appendChild($feedbackItemText)
+         $feddbackItem.appendChild($feedbackVote)
+
+         $wrapper.appendChild($feddbackItem)
 
         });
       })
+
+
+
+
       .catch(error => console.error("Erreur lors du chargement du JSON :", error));
   });

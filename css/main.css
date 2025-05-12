@@ -191,6 +191,7 @@ svg {
 	background-color: var(--grey-lighten-2);
 	width: max-content;
 	height: max-content;
+	cursor: pointer;
 }
 
 .feedback-item-text {
