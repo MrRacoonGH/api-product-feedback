@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    const $formSearch = document.querySelector(".btn")
+
+    
+    $formSearch.addEventListener("click", () => {
+        console.log("sa marche")
+    });
+
  
     fetch('./data/data.json')
       .then(response => response.json())
@@ -6,62 +14,45 @@ document.addEventListener("DOMContentLoaded", function () {
         const $wrapper = document.querySelector(".feedback-wrapper");
   
         items.forEach(function (item) {
-          const $card = document.createElement("div");
-          $card.classList.add("card");
+          const $feddbackItem = document.createElement("div");
+          $feddbackItem.classList.add("feedback-item");
+
+          const $feedbackVote = document.createElement("div");
+          $feedbackVote.classList.add("feedback-item-votes")
+
+          const $svgArrow = document.createElement("svg")
+
   
-          const $info = document.createElement("div");
-          $info.classList.add("info");
-  
-          const $image = document.createElement("img");
-          $image.src = item.logo;
-          $image.alt = item.name;
-  
-          const $details = document.createElement("div");
-          $details.classList.add("details");
-  
-          const $name = document.createElement("h2");
-          $name.textContent = item.name;
-  
-          const $description = document.createElement("p");
-          $description.textContent = item.description;
-  
-          const $action = document.createElement("div");
-          $action.classList.add("extensions-action");
-  
-          const $removeItem = document.createElement("li");
-          $removeItem.textContent = "remove";
-          $removeItem.addEventListener("click", () => {
-            $card.remove();
-          });
-  
-          const $switchLabel = document.createElement("label");
-          $switchLabel.classList.add("switch");
-  
-          const $toggleBtn = document.createElement("input");
-          $toggleBtn.type = "checkbox";
-          $toggleBtn.checked = false;
-  
-          const $slider = document.createElement("span");
-          $slider.classList.add("slider");
-  
-          $toggleBtn.addEventListener("change", () => {
-          });
-  
-          $switchLabel.appendChild($toggleBtn);
-          $switchLabel.appendChild($slider);
-  
-          $info.appendChild($image);
-          $info.appendChild($details);
-          $details.appendChild($name);
-          $details.appendChild($description);
-  
-          $action.appendChild($removeItem);
-          $action.appendChild($switchLabel);
-  
-          $card.appendChild($info);
-          $card.appendChild($action);
-  
-          $wrapper.appendChild($card);
+          const $textRegular = document.createElement("span");
+          $textRegular.textContent = $description
+
+          const $feedbackItemText = document.createElement("div")
+          $feedbackItemText.classList.add("feedback-item-text")
+
+          const $heading = document.createElement("h3")
+          $heading.classList.add("heading-3")
+
+          const $paragraph = document.createElement("p")
+
+          const $feedbackChip = document.createElement("div")
+          $feedbackChip.classList.add("feedback-chip")
+          $feedbackChip.classList.add("text-regular-3")
+
+          const $feedbackComments = document.createElement("div")
+          $feedbackComments.classList.add("feedback-item-comments")
+
+          const $bold = document.createElement("span")
+          $bold.classList.add("bold")
+
+          $feddbackItem.appendChild($feedbackVote)
+          $feedbackVote.appendChild($textRegular)
+          $textRegular.appendChild($feedbackItemText)
+          $feedbackItemText.appendChild($heading)
+          $heading.appendChild($paragraph)
+          $paragraph.appendChild($feedbackChip)
+          $feedbackChip.appendChild($feedbackComments)
+          $feedbackComments.appendChild($bold)
+
         });
       })
       .catch(error => console.error("Erreur lors du chargement du JSON :", error));
